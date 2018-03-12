@@ -1,0 +1,11 @@
+CC := mpicc
+FILE := bucket_sort_v
+CFLAGS := -O3
+
+all: $(outFILE)1 $(outFILE)2
+	$(CC) -o program $(outFILE)1.o $(outFILE)2.o
+
+$(FILE)1: $(FILE)1.c
+	$(CC) -o $(FILE)1 $(FILE)1.c $(CFLAGS)
+$(FILE)2: $(FILE)2.c
+	$(CC) -o $(FILE)2 $(FILE)2.c $(CFLAGS)

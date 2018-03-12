@@ -1,0 +1,75 @@
+flag n p T2Gen T2Sort
+Data: 100000000 8 0.457818 2.570747
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node vim-000 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+flag n p T2Gen T2Sort
+Data: 100000000 13 0.290421 1.821258
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node vim-000 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+flag n p T2Gen T2Sort
+Data: 100000000 18 0.216027 1.412198
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node vim-000 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+flag n p T2Gen T2Sort
+Data: 100000000 23 0.189069 1.173707
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node vim-000 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+flag n p T2Gen T2Sort
+Data: 100000000 28 0.152306 1.030343
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node vim-000 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+flag n p T2Gen T2Sort
+Data: 500000000 8 2.126633 14.321870
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node vim-000 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+flag n p T2Gen T2Sort
+Data: 500000000 13 1.430819 9.791251
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node vim-000 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+flag n p T2Gen T2Sort
+Data: 500000000 18 1.050467 7.700156
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node vim-000 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+flag n p T2Gen T2Sort
+Data: 500000000 23 0.851195 6.384669
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node vim-000 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+flag n p T2Gen T2Sort
+Data: 500000000 28 0.767656 5.539834
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node vim-000 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+flag n p T2Gen T2Sort
+Data: 2000000000 8 8.437234 62.441068
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node vim-000 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+flag n p T2Gen T2Sort
+Data: 2000000000 13 5.385480 40.764778
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node vim-000 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+flag n p T2Gen T2Sort
+Data: 2000000000 18 4.151152 32.725716
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node vim-000 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+flag n p T2Gen T2Sort
+Data: 2000000000 23 3.282620 26.914108
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node vim-000 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+flag n p T2Gen T2Sort
+Data: 2000000000 28 2.962829 23.518591
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 0 on node vim-000 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------

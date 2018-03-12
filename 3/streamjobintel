@@ -1,0 +1,106 @@
+!#bin/bash/
+clear
+module swap GNU Intel/13.0.1.117
+icc -O1 -DSTREAM_ARRAY_SIZE=1000 stream_5_10.c -o stream1
+icc -O1 -DSTREAM_ARRAY_SIZE=10000 stream_5_10.c -o stream2
+icc -O1 -DSTREAM_ARRAY_SIZE=100000 stream_5_10.c -o stream3
+icc -O1 -DSTREAM_ARRAY_SIZE=1000000 stream_5_10.c -o stream4
+icc -O1 -DSTREAM_ARRAY_SIZE=10000000 stream_5_10.c -o stream5
+
+echo 'done compiling'
+
+./stream1 > garbage
+cat streamoutput1 > streamoutputintel/O1
+./stream2 > garbage
+cat streamoutput1 >> streamoutputintel/O1
+./stream3 > garbage
+cat streamoutput1 >> streamoutputintel/O1
+./stream4 > garbage
+cat streamoutput1 >> streamoutputintel/O1
+./stream5 > garbage
+cat streamoutput1 >> streamoutputintel/O1
+
+echo 'starting O3'
+
+icc -O3 -DSTREAM_ARRAY_SIZE=1000 stream_5_10.c -o stream1 
+icc -O3 -DSTREAM_ARRAY_SIZE=10000 stream_5_10.c -o stream2
+icc -O3 -DSTREAM_ARRAY_SIZE=100000 stream_5_10.c -o stream3
+icc -O3 -DSTREAM_ARRAY_SIZE=1000000 stream_5_10.c -o stream4
+icc -O3 -DSTREAM_ARRAY_SIZE=10000000 stream_5_10.c -o stream5
+
+./stream1 > garbage
+cat streamoutput1 > streamoutputintel/O3
+./stream2 > garbage
+cat streamoutput1 >> streamoutputintel/O3
+./stream3 > garbage
+cat streamoutput1 >> streamoutputintel/O3
+./stream4 > garbage
+cat streamoutput1 >> streamoutputintel/O3
+./stream5 > garbage
+cat streamoutput1 >> streamoutputintel/O3
+
+echo 'starting SSE'
+
+icc -O3 -xSSE -DSTREAM_ARRAY_SIZE=1000 stream_5_10.c -o stream1
+icc -O3 -xSSE -DSTREAM_ARRAY_SIZE=10000 stream_5_10.c -o stream2
+icc -O3 -xSSE -DSTREAM_ARRAY_SIZE=100000 stream_5_10.c -o stream3
+icc -O3 -xSSE -DSTREAM_ARRAY_SIZE=1000000 stream_5_10.c -o stream4
+icc -O3 -xSSE -DSTREAM_ARRAY_SIZE=10000000 stream_5_10.c -o stream5
+icc -O3 -xSSE -DSTREAM_ARRAY_SIZE=10000000 stream_5_10.c -o stream6
+
+./stream1 > garbage
+cat streamoutput1 > streamoutputintel/SSE
+./stream2 > garbage
+cat streamoutput1 >> streamoutputintel/SSE
+./stream3 > garbage
+cat streamoutput1 >> streamoutputintel/SSE
+./stream4 > garbage
+cat streamoutput1 >> streamoutputintel/SSE
+./stream5 > garbage
+cat streamoutput1 >> streamoutputintel/SSE
+
+icc -O3 -xAVX -DSTREAM_ARRAY_SIZE=1000 stream_5_10.c -o stream1
+icc -O3 -xAVX -DSTREAM_ARRAY_SIZE=10000 stream_5_10.c -o stream2
+icc -O3 -xAVX -DSTREAM_ARRAY_SIZE=100000 stream_5_10.c -o stream3
+icc -O3 -xAVX -DSTREAM_ARRAY_SIZE=1000000 stream_5_10.c -o stream4
+icc -O3 -xAVX -DSTREAM_ARRAY_SIZE=10000000 stream_5_10.c -o stream5
+
+echo 'STARTING AVX'
+
+./stream1 > garbage
+cat streamoutput1 > streamoutputintel/AVX
+./stream2 > garbage
+cat streamoutput1 >> streamoutputintel/AVX
+./stream3 > garbage
+cat streamoutput1 >> streamoutputintel/AVX
+./stream4 > garbage
+cat streamoutput1 >> streamoutputintel/AVX
+./stream5 > garbage
+cat streamoutput1 >> streamoutputintel/AVX
+
+echo 'STARTING fast compiler'
+
+icc -O3 -fast -DSTREAM_ARRAY_SIZE=1000 stream_5_10.c -o stream1 
+icc -O3 -fast -DSTREAM_ARRAY_SIZE=10000 stream_5_10.c -o stream2 
+icc -O3 -fast -DSTREAM_ARRAY_SIZE=100000 stream_5_10.c -o stream3 
+icc -O3 -fast -DSTREAM_ARRAY_SIZE=1000000 stream_5_10.c -o stream4 
+icc -O3 -fast -DSTREAM_ARRAY_SIZE=10000000 stream_5_10.c -o stream5 
+
+echo 'STARTING fastg'
+
+./stream1 > garbage
+cat streamoutput1 > streamoutputintel/fast
+./stream2 > garbage
+cat streamoutput1 > streamoutputintel/fast
+./stream3 > garbage
+cat streamoutput1 > streamoutputintel/fast
+./stream4 > garbage
+cat streamoutput1 > streamoutputintel/fast
+./stream5 > garbage
+cat streamoutput1 > streamoutputintel/fast
+
+echo 'done'
+
+cd streamoutputintel
+
+./intelscript.gp

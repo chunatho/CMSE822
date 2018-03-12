@@ -1,0 +1,18 @@
+ninps = 0, curtest = 0
+N = 100000, M = 10000, B = 32
+Naive time: 296.806 sec
+Opt. time:  261.571 sec
+Achieved speedup= 1.13
+
+ninps = 0, curtest = 0
+N = 100000, M = 10000, B = 64
+Naive time: 83.663 sec
+Opt. time:  71.135 sec
+Achieved speedup= 1.18
+
+ninps = 0, curtest = 0
+N = 100000, M = 10000, B = 128
+Naive time: 109.699 sec
+Opt. time:  201.939 sec
+Achieved speedup= 0.54
+

@@ -1,0 +1,33 @@
+#!/bin/bash
+clear
+module swap GNU Intel/13.0.1.117
+icc -O1 vector_triad_memory.c -lm -o vectO1
+icc -O3 vector_triad_memory.c -lm -o vectO3
+icc -O3 -xSSE vector_triad_memory.c -lm -o vectO3SSE
+icc -O3 -xAVX vector_triad_memory.c -lm -o vectO3AVX
+icc -O3 -fast vector_triad_memory.c -lm -o vectO3fast
+
+echo 'done with compiling, starting vectO1'
+
+./vectO1 > inteloutput_memory/vectO1_output
+
+echo 'starting vectO3'
+
+./vectO3 > inteloutput_memory/vectO3_output
+
+echo 'starting vectO3SSE'
+
+./vectO3SSE > inteloutput_memory/vectO3SSE_output
+
+echo 'starting vectO3AVX'
+
+./vectO3AVX > inteloutput_memory/vectO3AVX_output
+echo 'starting vectO3fast'
+
+./vectO3fast > inteloutput_memory/vectO3fast_output
+
+echo 'starting GNUplot'
+
+cd inteloutput_memory
+
+./intelscript.gp

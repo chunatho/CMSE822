@@ -1,0 +1,14 @@
+# PAPI
+export PATH="/mnt/home/ohearnku/.local/papi/5.5.1/bin:$PATH"
+export INCLUDE_PATH="/mnt/home/ohearnku/.local/papi/5.5.1/include:$INCLUDE_PATH"
+export LD_LIBRARY_PATH="/mnt/home/ohearnku/.local/papi/5.5.1/lib:$LD_LIBRARY_PATH"
+export MANPATH="/mnt/home/ohearnku/.local/papi/5.5.1/man:$MANPATH"
+
+# TAU
+export PATH="/mnt/home/ohearnku/.local/tau/2.26/x86_64/bin:$PATH"
+export INCLUDE_PATH="/mnt/home/ohearnku/.local/tau/2.26/include:$INCLUDE_PATH"
+export LD_LIBRARY_PATH="/mnt/home/ohearnku/.local/tau/2.26/x86_64/lib:$LD_LIBRARY_PATH"
+export TAU_MAKEFILE="/mnt/home/ohearnku/.local/tau/2.26/x86_64/lib/Makefile.tau-papi-mpi"
+export TAU_OPTIONS=-optCompInst
+export TAU_METRICS="P_WALL_CLOCK_TIME:PAPI_L1_DCM:PAPI_L2_TCM:PAPI_L3_TCM”
+

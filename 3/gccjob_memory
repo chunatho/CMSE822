@@ -1,0 +1,23 @@
+#!/bin/bash
+clear
+gcc -O1 vector_triad_memory.c -lm -o vectO1
+gcc -O3 vector_triad_memory.c -lm -o vectO3
+gcc -O3 -march=native vector_triad_memory.c -lm -o vectO3march
+
+echo 'done with compiling, starting vectO1_mem'
+
+./vectO1 > gccoutput_memory/vectO1_output
+
+echo 'starting vectO3_mem'
+
+./vectO3 > gccoutput_memory/vectO3_output
+
+echo 'starting vectO3march_mem'
+
+./vectO3march > gccoutput_memory/vectO3march_output
+
+echo 'starting GNUplot'
+
+cd gccoutput_memory
+
+./GNUplotscript.gp

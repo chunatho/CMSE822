@@ -1,0 +1,98 @@
+#!/bin/bash -login
+
+#
+# Use standard intel16 "laconia" nodes.
+#
+#PBS -l feature="lac"
+#PBS -l nodes=1:ppn=28
+
+#
+# Expected runtime of job. Make sure to request a little bit extra.
+#
+#PBS -l walltime=0:30:00
+
+#
+# Amount of memory required by job.
+#
+#PBS -l mem=120gb
+
+#
+# Pipe stderr into stdout.
+#
+#PBS -j oe
+
+#
+# Name of job.
+#
+#PBS -N CMSE822-HW5
+
+#
+# Send email notification to your MSU email when the job begins, ends, or is
+# aborted by the scheduler.
+#
+#PBS -M your-username@msu.edu
+#PBS -m abe
+
+module purge
+module load GNU/6.2
+
+#
+# Change to the directory from which the job was submitted. In order for this to
+# work as intended, your job should be submitted from the directory in which you
+# want it to run.
+#
+# /${PBS_O_WORKDIR}
+ls
+#
+# Set OpenMP environment variables.
+#
+export OMP_NUM_THREADS=28
+
+#
+# Set name of output file for data.
+#
+OUTFILE="${PBS_JOBID}.csv"
+
+rm results_pi
+touch results_pi
+rm results_cs
+touch results_cs
+
+touch ${OUTFILE}
+#
+# Compile code.
+#
+#make -j pi
+make
+#
+# Execute tests.
+#
+
+for TOSSES in 100 1000 10000
+do
+    for THREADS in 1 2 4 8 14 20 28
+    do
+       echo "starting cs.x $THREADS"
+       ./cs.x ${TOSSES} ${THREADS} >> results_cs
+       echo 'finished cs.x '
+    done
+done
+grep "100 " results_cs > results/cs1
+grep "1000 " results_cs > results/cs2
+grep "10000 " results_cs > results/cs3
+
+
+for TOSSES in 100000 10000000 1000000000
+do
+    for THREADS in 1 2 4 8 14 20 28
+    do
+        ./pi.x ${TOSSES} ${THREADS} >> results_pi
+    done
+    echo 'next iterations'
+done
+
+grep "100000 " results_pi > results/pi1
+grep "10000000 " results_pi > results/pi2
+grep "1000000000 " results_pi > results/pi3
+
+./results/GNUplotscript.gp

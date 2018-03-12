@@ -1,0 +1,23 @@
+#!/bin/bash
+clear
+gcc -O1 vector_triad.c -lm -o vectO1
+gcc -O3 vector_triad.c -lm -o vectO3
+gcc -O3 -march=native vector_triad.c -lm -o vectO3march
+
+echo 'done with compiling, starting vectO1'
+
+./vectO1 > gccoutput/vectO1_output
+
+echo 'starting vectO3'
+
+./vectO3 > gccoutput/vectO3_output
+
+echo 'starting vectO3march'
+
+./vectO3march > gccoutput/vectO3march_output
+
+echo 'starting GNUplot'
+
+cd gccoutput
+
+./GNUplotscript.gp

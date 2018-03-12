@@ -1,0 +1,20 @@
+7 templated_functions_MULTI_PAPI_L1_DCM
+# Name Calls Subrs Excl Incl ProfileCalls # <metadata><attribute><name>Metric Name</name><value>PAPI_L1_DCM</value></attribute></metadata>
+".TAU application" 1 1 99712 4035467252 0 GROUP="TAU_USER" 
+"main [{/mnt/home/chunatho/hw2/./src/main.c} {27,0}]" 1 36 7755 4035367540 0 GROUP="TAU_DEFAULT" 
+"initMatrix [{/mnt/home/chunatho/hw2/./src/main.c} {148,0}]" 6 0 277486432 277486432 0 GROUP="TAU_DEFAULT" 
+"naiveTranspose [{/mnt/home/chunatho/hw2/src/naiveTranspose.c} {11,0}]" 6 0 2499372385 2499372385 0 GROUP="TAU_DEFAULT" 
+"getElapsed [{/mnt/home/chunatho/hw2/./src/main.c} {139,0}]" 12 0 149 149 0 GROUP="TAU_DEFAULT" 
+"optTranspose [{/mnt/home/chunatho/hw2/src/optTranspose.c} {21,0}]" 6 0 675955236 675955236 0 GROUP="TAU_DEFAULT" 
+"checkDifference [{/mnt/home/chunatho/hw2/./src/main.c} {160,0}]" 6 0 582545583 582545583 0 GROUP="TAU_DEFAULT" 
+0 aggregates
+7 templated_functions_MULTI_PAPI_L2_TCM
+# Name Calls Subrs Excl Incl ProfileCalls # <metadata><attribute><name>Metric Name</name><value>PAPI_L2_TCM</value></attribute></metadata>
+".TAU application" 1 1 104881 4161241007 0 GROUP="TAU_USER" 
+"main [{/mnt/home/chunatho/hw2/./src/main.c} {27,0}]" 1 36 18783 4161136126 0 GROUP="TAU_DEFAULT" 
+"initMatrix [{/mnt/home/chunatho/hw2/./src/main.c} {148,0}]" 6 0 276474312 276474312 0 GROUP="TAU_DEFAULT" 
+"naiveTranspose [{/mnt/home/chunatho/hw2/src/naiveTranspose.c} {11,0}]" 6 0 2481218037 2481218037 0 GROUP="TAU_DEFAULT" 
+"getElapsed [{/mnt/home/chunatho/hw2/./src/main.c} {139,0}]" 12 0 182 182 0 GROUP="TAU_DEFAULT" 
+"optTranspose [{/mnt/home/chunatho/hw2/src/optTranspose.c} {21,0}]" 6 0 633582932 633582932 0 GROUP="TAU_DEFAULT" 
+"checkDifference [{/mnt/home/chunatho/hw2/./src/main.c} {160,0}]" 6 0 769841880 769841880 0 GROUP="TAU_DEFAULT" 
+0 aggregates

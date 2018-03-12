@@ -1,0 +1,11 @@
+#!/bin/bash -login
+
+grep "100 " results_cs > results/cs1
+grep "1000 " results_cs > results/cs2
+grep "10000 " results_cs > results/cs3
+
+grep "100000 " results_pi > results/pi1
+grep "10000000 " results_pi > results/pi2
+grep "1000000000 " results_pi > results/pi3
+
+./results/GNUplotscript.gp

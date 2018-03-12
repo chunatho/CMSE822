@@ -1,0 +1,56 @@
+#!/bin/bash
+
+module load GNU/6.2
+
+out2=codebreakerResults
+
+echo 'starting codebreak block'
+rm -r ${out2}
+cp ../codebreakerblock.c src/codebreaker/codebreaker.c
+make
+
+for j in 299999 1799262856 75555555555555
+do
+   ./encrypter.x inp2.txt ${j}
+
+   for i in 1 2 3 4 5
+   do
+      mpirun -np ${i} ./codebreaker.x inp2.txt.ecp >> ${out2}_{j}
+   done
+done
+
+for j in 299999 17399262856 113731199161856
+do
+   grep "Time" ${out2}_${j} | awk '{print $2 " " $4}' > data/codedata_block_${j}
+end
+
+
+
+<<COMMENT1
+echo 'starting codebreakercycle'
+rm -r ${out2}
+cp ../codebreakercycle.c src/codebreaker/codebreaker.c
+make
+
+for i in 1 2 3 4 5
+do
+   mpirun -np ${i} ./codebreaker.x inp2.txt.ecp >> ${out2}
+done
+
+grep "Time" ${out2} | awk '{print $2 " " $4}' > data/codedata_cycle
+COMMENT1
+
+
+<<COMMENT2
+echo 'starting codebreak Bonus'
+rm -r ${out2}
+cp ../codebreakerbonus.c src/codebreaker/codebreaker.c
+make
+
+for i in 1 2 3 4 5
+do
+   mpirun -np ${i} ./codebreaker.x inp2.txt.ecp >> ${out2}
+done
+
+grep "Time" ${out2} | awk '{print $2 " " $4}' > data/codedata_bonus
+COMMENT2

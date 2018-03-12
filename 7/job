@@ -1,0 +1,30 @@
+#!/bin/bash
+
+FILE=cardiacsim.cu
+EX=cardiacsim
+DATA=data
+mkdir ${DATA}
+rm runerror
+rm ${DATA}/*_data
+
+SIZE1=200
+SIZE2=1000
+SIZE3=5000
+
+for x in 1 2 3
+    do
+    cp cuda/v${x}_${FILE}  v1_${FILE} 
+    make &> makeerror
+    for size in ${SIZE1} ${SIZE2} ${SIZE3}
+        do
+        ./v1_${EX} -t 100 -n ${size} 1>> ${DATA}/v${x}_data 2>runerror
+    done
+    #search through results for size 1 data
+    grep "max" ${DATA}/v${x}_data | awk '{print $2 " " $6}' > ${DATA}/v${x}times
+    echo 'finished round'
+done
+
+cd ${DATA}/.
+./GNUplotscript.gp
+
+echo 'finished program'

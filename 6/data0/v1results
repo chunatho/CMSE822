@@ -1,0 +1,45 @@
+flag n p T2Gen T2Sort TotalT
+Data: 100000000 8 3.221802 2.455234
+success
+flag n p T2Gen T2Sort TotalT
+Data: 100000000 13 3.785614 1.652753
+success
+flag n p T2Gen T2Sort TotalT
+Data: 100000000 18 3.902626 1.262957
+success
+flag n p T2Gen T2Sort TotalT
+Data: 100000000 23 3.910646 1.028798
+success
+flag n p T2Gen T2Sort TotalT
+Data: 100000000 28 3.934146 0.883258
+success
+flag n p T2Gen T2Sort TotalT
+Data: 500000000 8 15.814414 13.338806
+success
+flag n p T2Gen T2Sort TotalT
+Data: 500000000 13 19.401999 8.990128
+success
+flag n p T2Gen T2Sort TotalT
+Data: 500000000 18 19.457372 6.842907
+success
+flag n p T2Gen T2Sort TotalT
+Data: 500000000 23 19.548258 5.541602
+success
+flag n p T2Gen T2Sort TotalT
+Data: 500000000 28 19.553991 4.746405
+success
+flag n p T2Gen T2Sort TotalT
+Data: 2000000000 8 65.327682 56.969075
+success
+flag n p T2Gen T2Sort TotalT
+Data: 2000000000 13 73.803798 37.421487
+success
+flag n p T2Gen T2Sort TotalT
+Data: 2000000000 18 78.180705 29.636697
+success
+flag n p T2Gen T2Sort TotalT
+Data: 2000000000 23 79.147635 24.048912
+success
+flag n p T2Gen T2Sort TotalT
+Data: 2000000000 28 78.510669 20.330677
+success

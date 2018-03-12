@@ -1,0 +1,98 @@
+#!/bin/bash -login
+
+
+# Use standard intel16 "laconia" nodes.
+#PBS -l feature="lac"
+#PBS -l nodes=5:ppn=28
+
+
+# Expected runtime of job. Make sure to request a little bit extra.
+#PBS -l walltime=0:40:00
+
+
+# Amount of memory required by job.
+#PBS -l mem=100gb
+
+
+# Pipe stderr into stdout.
+#PBS -j oe
+
+
+# Name of job.
+#PBS -N CMSE822-CHUNA-HW6
+
+# Send email notification to your MSU email when the job begins, ends, or is
+# aborted by the scheduler.
+#PBS -M chunatho@msu.edu
+#PBS -m abe
+
+# source /mnt/home/chunatho/cmse_setup.sh
+
+# Change to the directory from which the job was submitted. In order for this to
+# work as intended, your job should be submitted from the directory in which you
+# want it to run.
+cd /mnt/home/chunatho/homework/6/#!/bin/bash
+
+
+# commands to be executed
+
+FILE=bucket_sort_v
+DATA=data
+
+module load GNU/6.2
+module load OpenMPI
+
+rm ${DATA}/*error
+rm ${DATA}/*results
+
+SIZE1=100000000
+SIZE2=500000000
+SIZE3=2000000000
+# SIZE1=1000
+# SIZE2=10000
+# SIZE3=100000
+
+
+make
+mkdir ${DATA}
+
+for n in ${SIZE1} ${SIZE2} ${SIZE3}
+    do
+    for x in {14..140..28}
+#    for x in {1..2..1}
+        do
+        mpirun -x LD_PRELOAD=libmpi.so -np ${x} ./${FILE}1 ${n} 2>${DATA}/v1error 1>>${DATA}/v1results
+        mpirun -x LD_PRELOAD=libmpi.so -np ${x} ./${FILE}2 ${n} 2>${DATA}/v2error 1>>${DATA}/v2results
+    done
+    echo 'finished round'
+done
+
+#Binning Comparison
+for n in ${SIZE1}
+    do
+    for x in {14..140..28}
+        do
+        mpirun -x LD_PRELOAD=libmpi.so -np ${x} ./${FILE}3 ${n} 2>${DATA}/v3error 1>>${DATA}/v3results
+        mpirun -x LD_PRELOAD=libmpi.so -np ${x} ./${FILE}4 ${n} 2>${DATA}/v4error 1>>${DATA}/v4results
+    done
+    echo 'Binning finished round'
+done
+
+#search through results for size 1 data
+grep "${SIZE1} " ${DATA}/v1results | awk '{print $3 " " $4 " " $5}' > data/v1times_1
+grep "${SIZE1} " ${DATA}/v2results | awk '{print $3 " " $4 " " $5}' > data/v2times_1
+grep "${SIZE1} " ${DATA}/v3results | awk '{print $3 " " $4 " " $5}' > data/v3times_1
+grep "${SIZE1} " ${DATA}/v4results | awk '{print $3 " " $4 " " $5}' > data/v4times_1
+
+#search through results for size 2 data
+grep "${SIZE2} " ${DATA}/v1results | awk '{print $3 " " $4 " " $5}' > data/v1times_2
+grep "${SIZE2} " ${DATA}/v2results | awk '{print $3 " " $4 " " $5}' > data/v2times_2
+
+#search through results for size 3 data
+grep "${SIZE3} " ${DATA}/v1results | awk '{print $3 " " $4 " " $5}' > data/v1times_3
+grep "${SIZE3} " ${DATA}/v2results | awk '{print $3 " " $4 " " $5}' > data/v2times_3
+
+cd ${DATA}
+./GNUplotscript.gp
+
+echo 'finished program'

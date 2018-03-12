@@ -1,0 +1,15 @@
+#!/bin/bash
+clear
+module swap GNU Intel/13.0.1.117
+icc -O1 stream_5_10.c -lm -o streamO1
+icc -O3 stream_5_10.c -lm -o streamO3
+echo 'streamSSE'
+icc -O3 -xSSE stream_5_10.c -lm -o streamSSE
+icc -O3 -xAVX stream_5_10.c -lm -o streamAVX
+icc -O3 -fast stream_5_10.c -lm -o streamfast
+
+./streamO1
+./streamO3
+./streamSSE
+./streamAVX
+./streamfast

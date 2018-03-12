@@ -1,0 +1,10 @@
+7 templated_functions_MULTI_PAPI_L3_TCM
+# Name Calls Subrs Excl Incl ProfileCalls # <metadata><attribute><name>Metric Name</name><value>PAPI_L3_TCM</value></attribute></metadata>
+".TAU application" 1 1 265 3170344920 0 GROUP="TAU_USER" 
+"main [{/mnt/home/chunatho/hw2/./src/main.c} {27,0}]" 1 36 13270 3170344655 0 GROUP="TAU_DEFAULT" 
+"initMatrix [{/mnt/home/chunatho/hw2/./src/main.c} {148,0}]" 6 0 11363 11363 0 GROUP="TAU_DEFAULT" 
+"naiveTranspose [{/mnt/home/chunatho/hw2/src/naiveTranspose.c} {11,0}]" 6 0 2289398377 2289398377 0 GROUP="TAU_DEFAULT" 
+"getElapsed [{/mnt/home/chunatho/hw2/./src/main.c} {139,0}]" 12 0 166 166 0 GROUP="TAU_DEFAULT" 
+"optTranspose [{/mnt/home/chunatho/hw2/src/optTranspose.c} {21,0}]" 6 0 537626121 537626121 0 GROUP="TAU_DEFAULT" 
+"checkDifference [{/mnt/home/chunatho/hw2/./src/main.c} {160,0}]" 6 0 343295358 343295358 0 GROUP="TAU_DEFAULT" 
+0 aggregates

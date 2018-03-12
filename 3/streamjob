@@ -1,0 +1,71 @@
+!#bin/bash/
+clear
+gcc -O1 -DSTREAM_ARRAY_SIZE=1000 stream_5_10.c -o stream1
+gcc -O1 -DSTREAM_ARRAY_SIZE=10000 stream_5_10.c -o stream2
+gcc -O1 -DSTREAM_ARRAY_SIZE=100000 stream_5_10.c -o stream3
+gcc -O1 -DSTREAM_ARRAY_SIZE=1000000 stream_5_10.c -o stream4
+gcc -O1 -DSTREAM_ARRAY_SIZE=10000000 stream_5_10.c -o stream5
+gcc -O1 -DSTREAM_ARRAY_SIZE=100000000 stream_5_10.c -o stream6
+
+echo 'done compiling'
+
+./stream1 > garbage
+cat streamoutput1 > streamoutput/gccO1
+./stream2 > garbage
+cat streamoutput1 >> streamoutput/gccO1
+./stream3 > garbage
+cat streamoutput1 >> streamoutput/gccO1
+./stream4 > garbage
+cat streamoutput1 >> streamoutput/gccO1
+./stream5 > garbage
+cat streamoutput1 >> streamoutput/gccO1
+./stream6 > garbage
+cat streamoutput1 >> streamoutput/gccO1
+
+echo 'starting O3'
+
+gcc -O3 -DSTREAM_ARRAY_SIZE=1000 stream_5_10.c -o stream1
+gcc -O3 -DSTREAM_ARRAY_SIZE=10000 stream_5_10.c -o stream2
+gcc -O3 -DSTREAM_ARRAY_SIZE=100000 stream_5_10.c -o stream3
+gcc -O3 -DSTREAM_ARRAY_SIZE=1000000 stream_5_10.c -o stream4
+gcc -O3 -DSTREAM_ARRAY_SIZE=10000000 stream_5_10.c -o stream5
+gcc -O3 -DSTREAM_ARRAY_SIZE=100000000 stream_5_10.c -o stream6
+
+./stream1 > garbage
+cat streamoutput1 > streamoutput/gccO3
+./stream2 > garbage
+cat streamoutput1 >> streamoutput/gccO3
+./stream3 > garbage
+cat streamoutput1 >> streamoutput/gccO3
+./stream4 > garbage
+cat streamoutput1 >> streamoutput/gccO3
+./stream5 > garbage
+cat streamoutput1 >> streamoutput/gccO3
+./stream6 > garbage
+cat streamoutput1 >> streamoutput/gccO3
+
+echo 'starting march'
+
+gcc -O3 -march=native -DSTREAM_ARRAY_SIZE=1000 stream_5_10.c -o stream1
+gcc -O3 -march=native -DSTREAM_ARRAY_SIZE=10000 stream_5_10.c -o stream2
+gcc -O3 -march=native -DSTREAM_ARRAY_SIZE=100000 stream_5_10.c -o stream3
+gcc -O3 -march=native -DSTREAM_ARRAY_SIZE=1000000 stream_5_10.c -o stream4
+gcc -O3 -march=native -DSTREAM_ARRAY_SIZE=10000000 stream_5_10.c -o stream5
+gcc -O3 -march=native -DSTREAM_ARRAY_SIZE=100000000 stream_5_10.c -o stream6
+
+./stream1 > garbage
+cat streamoutput1 > streamoutput/gccmarch
+./stream2 > garbage
+cat streamoutput1 >> streamoutput/gccmarch
+./stream3 > garbage
+cat streamoutput1 >> streamoutput/gccmarch
+./stream4 > garbage
+cat streamoutput1 >> streamoutput/gccmarch
+./stream5 > garbage
+cat streamoutput1 >> streamoutput/gccmarch
+./stream6 > garbage
+cat streamoutput1 >> streamoutput/gccmarch
+
+cd streamoutput
+
+./GNUplotscript.gp

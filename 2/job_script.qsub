@@ -1,0 +1,54 @@
+#!/bin/bash -login
+
+#
+# Use standard intel16 "laconia" nodes.
+#
+#PBS -l feature="lac"
+#PBS -l nodes=1:ppn=28
+
+#
+# Expected runtime of job. Make sure to request a little bit extra.
+#
+#PBS -l walltime=0:30:00
+
+#
+# Amount of memory required by job.
+#
+#PBS -l mem=120gb
+
+#
+# Pipe stderr into stdout.
+#
+#PBS -j oe
+
+#
+# Name of job.
+#
+#PBS -N CMSE822-HW2
+
+#
+# Send email notification to your MSU email when the job begins, ends, or is
+# aborted by the scheduler.
+#
+#PBS -M your-username@msu.edu
+#PBS -m abe
+
+module purge
+module load GNU/4.8.3 OpenMPI/1.8
+
+#
+# Change to the directory from which the job was submitted. In order for this to
+# work as intended, your job should be submitted from the directory in which you
+# want it to run.
+#
+cd ${PBS_O_WORKDIR}
+
+#
+# Compile and run your code. The below option runs the compiled code in the test 
+# mode only. You can (and should) modify this part based on what kind of 
+# performance data you would like to collect (i.e., using the naive code for various 
+# matrix sizes, collecting cache utilization data using the TAU-instrumented version,
+# etc.)
+#
+
+make -j && ./transpose.x test test.inp

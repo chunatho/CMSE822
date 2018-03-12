@@ -1,0 +1,11 @@
+#!/bin/bash
+clear
+gcc -O1 stream_5_10.c -lm -o streamO1
+gcc -O3 stream_5_10.c -lm -o streamO3
+gcc -O3 -march=native stream_5_10.c -lm -o streammarch
+
+./streamO1
+
+./streamO3
+
+./streammarch
